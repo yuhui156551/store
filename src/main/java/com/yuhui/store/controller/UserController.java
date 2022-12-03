@@ -5,9 +5,8 @@ import com.yuhui.store.entity.User;
 import com.yuhui.store.service.UserService;
 import com.yuhui.store.utils.JsonR;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletSecurityElement;
 import javax.servlet.http.HttpSession;
@@ -110,5 +109,14 @@ public class UserController extends BaseController {
 
         // 响应成功
         return new JsonR<Void>(OK);
+    }
+
+
+    @PostMapping("change_avatar")
+    public JsonR<String> changeAvatar(HttpSession session,
+                                      // -->表单中name的值<input type="file" name="file"> , 前端传过来的数据才能对应上
+                                      // 但此时name的值和变量名一致，可以省略RequestParam的书写
+                                      @RequestParam("file") MultipartFile file){
+
     }
 }

@@ -36,4 +36,10 @@ public class UserMapperTest {
         User user = userMapper.findByUid(9);
         System.out.println(user);
     }
+
+    @Test
+    public void updateAvatarByUid() {
+        Integer rows = userMapper.updateAvatarByUid(7, "/upload/avatar.png", "范", new Date());
+        System.out.println("rows=" + rows);
+    }
 }

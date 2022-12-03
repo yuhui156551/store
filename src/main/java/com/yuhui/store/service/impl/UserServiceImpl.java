@@ -125,7 +125,7 @@ public class UserServiceImpl implements UserService {
         // 调用userMapper的findByUid()方法，根据参数uid查询用户数据
         User user = userMapper.findByUid(uid);
         // 判断查询结果是否为null,判断查询结果中的isDelete是否为1
-        if(user == null || user.getIsDelete() == 1){
+        if (user == null || user.getIsDelete() == 1) {
             // 是：抛出UserNotFoundException异常
             throw new UserNotFoundException("用户数据不存在");
         }
@@ -148,7 +148,7 @@ public class UserServiceImpl implements UserService {
         // 调用userMapper的findByUid()方法，根据参数uid查询用户数据
         User result = userMapper.findByUid(uid);
         // 判断查询结果是否为null,判断查询结果中的isDelete是否为1
-        if(result == null || result.getIsDelete() == 1){
+        if (result == null || result.getIsDelete() == 1) {
             // 是：抛出UserNotFoundException异常
             throw new UserNotFoundException("用户数据不存在");
         }
@@ -165,8 +165,22 @@ public class UserServiceImpl implements UserService {
         Integer row = userMapper.updateInfoByUid(user);
 
         // 判断以上返回的受影响行数是否不为1
-        if(row != 1){
+        if (row != 1) {
             // 是：抛出UpdateException异常
+            throw new UpdateException("更新数据时出现未知错误");
+        }
+    }
+
+    @Override
+    public void changeAvatar(Integer uid, String username, String avatar) {
+        User result = userMapper.findByUid(uid);
+        if (result == null || result.getIsDelete() == 1) {
+            throw new UserNotFoundException("用户数据不存在");
+        }
+
+        Integer rows = userMapper.updateAvatarByUid(uid, avatar, username, new Date());
+
+        if(rows != 1){
             throw new UpdateException("更新数据时出现未知错误");
         }
     }

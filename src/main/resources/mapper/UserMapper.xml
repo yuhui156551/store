@@ -47,6 +47,18 @@
             uid = #{uid}
     </update>
 
+    <!--根据uid修改用户头像-->
+    <update id="updateAvatarByUid">
+        UPDATE
+            t_user
+        SET
+            avatar = #{avatar},
+            modified_user = #{modifiedUser},
+            modified_time = #{modifiedTime}
+        WHERE
+            uid = #{uid}
+    </update>
+
     <!-- 根据用户id查询用户数据-->
     <select id="findByUid" resultMap="UserEntityMap">
         SELECT

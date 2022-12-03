@@ -1,5 +1,6 @@
 package com.yuhui.store.controller;
 
+import com.yuhui.store.controller.exception.*;
 import com.yuhui.store.service.exception.*;
 import com.yuhui.store.utils.JsonR;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +21,7 @@ public class BaseController {
      * @param e
      * @return
      */
-    @ExceptionHandler(ServiceException.class)
+    @ExceptionHandler({ServiceException.class, FileUploadException.class})
     public JsonR<Void> handleException(Throwable e) {
         log.info(e.getMessage());
 
@@ -36,6 +37,16 @@ public class BaseController {
             result.setCode(4002);
         } else if (e instanceof UpdateException) {
             result.setCode(5002);
+        }  else if (e instanceof FileEmptyException) {
+            result.setCode(6000);
+        } else if (e instanceof FileSizeException) {
+            result.setCode(6001);
+        } else if (e instanceof FileTypeException) {
+            result.setCode(6002);
+        } else if (e instanceof FileStateException) {
+            result.setCode(6003);
+        } else if (e instanceof FileUploadIOException) {
+            result.setCode(6004);
         }
 
         return result;

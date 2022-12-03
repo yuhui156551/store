@@ -81,4 +81,14 @@ public class UserServiceTest {
 			System.out.println(e.getMessage());
 		}
 	}
+
+	@Test
+	void changeAvatar(){
+		try {
+			userService.changeAvatar(7,"头像管理员","---/---.png");
+		} catch (ServiceException e) {
+			System.out.println(e.getClass().getSimpleName());
+			System.out.println(e.getMessage());
+		}
+	}
 }

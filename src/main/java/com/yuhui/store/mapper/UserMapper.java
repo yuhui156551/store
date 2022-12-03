@@ -50,4 +50,17 @@ public interface UserMapper {
      * @return 受影响的行数
      */
     Integer updateInfoByUid(User user);
+
+    /**
+     * 根据用户id修改头像
+     * @param uid id
+     * @param avatar 头像文件路径
+     * @param modifiedUser 修改人
+     * @param modifiedTime 修改时间
+     * @return 影响行数
+     */
+    Integer updateAvatarByUid(@Param("uid") Integer uid,
+                              @Param("avatar") String avatar,
+                              @Param("modifiedUser") String modifiedUser,
+                              @Param("modifiedTime") Date modifiedTime);
 }
