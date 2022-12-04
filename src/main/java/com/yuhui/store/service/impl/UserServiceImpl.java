@@ -80,7 +80,7 @@ public class UserServiceImpl implements UserService {
         // 将查询结果中的uid、username、avatar封装到新的user对象中
         result.setUid(user.getUid());
         result.setUsername(user.getUsername());
-        result.setAvatar(user.getAvatar());
+        result.setAvatar(user.getAvatar());// 头像数据
 
         // 返回新的user对象,返回的数据是为了辅助前端页面做数据展示，例如头像，用户名等
         return result;

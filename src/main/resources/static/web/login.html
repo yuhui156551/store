@@ -152,7 +152,10 @@
 					dataType: "json",
 					success: function(json) {
 						if (json.code == 200) {
-							alert("登录成功！");
+							//alert("登录成功！");
+							// 登陆成功，将业务层返回的头像数据存入cookie
+							$.cookie("avatar", json.data.avatar, {expires: 7});// cookie参数：key,value,time(天)
+							console.log("cookie中的avatar=" + $.cookie("avatar"));
 							location.href = "index.html";
 						} else {
 							alert("登录失败！" + json.message);
