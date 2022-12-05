@@ -47,6 +47,8 @@ public class BaseController {
             result.setCode(6003);
         } else if (e instanceof FileUploadIOException) {
             result.setCode(6004);
+        } else if (e instanceof AddressCountLimitException) {
+            result.setCode(4003);
         }
 
         return result;
