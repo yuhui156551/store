@@ -30,13 +30,31 @@
         #{createdTime}, #{modifiedUser}, #{modifiedTime} )
     </insert>
 
+    <update id="updateNonDefaultByUid">
+        UPDATE t_address SET is_default=0 WHERE uid=#{uid}
+    </update>
+    <!--将指定的收货地址设置为默认地址-->
+    <update id="updateDefaultByAid">
+        UPDATE t_address
+        SET
+        is_default=1,
+        modified_user=#{modifiedUser},
+        modified_time=#{modifiedTime}
+        WHERE aid=#{aid}
+    </update>
+    <!--根据收货地址aid值，查询收货地址详情-->
+    <select id="findByAid" resultMap="AddressEntityMap">
+        SELECT * FROM t_address WHERE aid=#{aid}
+    </select>
+
     <!--统计某用户的收货地址数据的数量-->
     <select id="countByUid" resultType="java.lang.Integer">
-        SELECT
-            COUNT(*)
-        FROM
-            t_address
-        WHERE
-            uid=#{uid}
+        SELECT COUNT(*) FROM t_address WHERE uid=#{uid}
     </select>
+
+    <!--收货地址列表数据-->
+    <select id="findByUid" resultMap="AddressEntityMap">
+        SELECT * FROM t_address WHERE uid=#{uid} ORDER BY is_default DESC,created_time DESC
+    </select>
+
 </mapper>

@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 public class AddressServiceTest {
     @Autowired
@@ -22,6 +24,15 @@ public class AddressServiceTest {
         } catch (ServiceException e) {
             System.out.println(e.getClass().getSimpleName());
             System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    void getByUid(){
+        List<Address> addresses = addressService.getByUid(10);
+        System.out.println(addresses.size());
+        for (Address address : addresses) {
+            System.out.println(address);
         }
     }
 }

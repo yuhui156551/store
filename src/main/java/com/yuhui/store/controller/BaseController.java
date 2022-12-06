@@ -49,8 +49,9 @@ public class BaseController {
             result.setCode(6004);
         } else if (e instanceof AddressCountLimitException) {
             result.setCode(4003);
+        } else if (e instanceof AddressNotFoundException) {
+            result.setCode(4004);
         }
-
         return result;
     }
 

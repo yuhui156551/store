@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 public class AddressMapperTest {
     @Autowired
@@ -25,5 +27,15 @@ public class AddressMapperTest {
     @Test
     void countById(){
         System.out.println("收货地址总数："+addressMapper.countByUid(18));
+    }
+
+    @Test
+    public void findByUid() {
+        Integer uid = 10;
+        List<Address> list = addressMapper.findByUid(uid);
+        System.err.println("count=" + list.size());
+        for (Address item : list) {
+            System.out.println(item);
+        }
     }
 }
