@@ -1,4 +1,9 @@
 # store
-SpringBoot2+Mybatis+MySQL
+商城项目
+ :tired_face: 只可惜前端用的是JQuery
 
-:blush:正在完成基本功能...
+ :yum: 后端主要技术栈：SpringBoot2+Mybatis
+
+ :smile: 项目比较简单，用来复习MyBatis，熟悉MVC架构
+
+ :smiley: 正在完成基本功能...
