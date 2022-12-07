@@ -49,7 +49,7 @@ public interface UserService {
      * 修改头像
      * @param uid 当前登录的用户的id
      * @param username 当前登录的用户名
-     * @param Avatar 头像路径
+     * @param avatar 头像路径
      */
     void changeAvatar(Integer uid,String username,String avatar);
 }
