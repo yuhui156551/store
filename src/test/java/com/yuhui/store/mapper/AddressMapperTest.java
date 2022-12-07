@@ -38,4 +38,16 @@ public class AddressMapperTest {
             System.out.println(item);
         }
     }
+
+    @Test
+    void deleteByAid(){
+        Integer rows = addressMapper.deleteByAid(4);
+        System.out.println(rows);
+    }
+
+    @Test
+    void findLastModified(){
+        Address address = addressMapper.findLastModified(10);
+        System.out.println(address);
+    }
 }

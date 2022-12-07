@@ -2,13 +2,9 @@ package com.yuhui.store.service.impl;
 
 import com.yuhui.store.entity.Address;
 import com.yuhui.store.mapper.AddressMapper;
-import com.yuhui.store.mapper.UserMapper;
 import com.yuhui.store.service.AddressService;
 import com.yuhui.store.service.DistrictService;
-import com.yuhui.store.service.exception.AddressCountLimitException;
-import com.yuhui.store.service.exception.AddressNotFoundException;
-import com.yuhui.store.service.exception.InsertException;
-import com.yuhui.store.service.exception.UpdateException;
+import com.yuhui.store.service.exception.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -107,6 +103,37 @@ public class AddressServiceImpl implements AddressService {
         Integer row = addressMapper.updateDefaultByAid(aid, username, new Date());
         if(row != 1){
             throw new UpdateException("更新数据时出现未知异常");
+        }
+    }
+
+    @Transactional
+    @Override
+    public void delete(Integer aid, Integer uid, String username) {
+        //TODO 厘清过程，写出流程。昨天GitHub push不了了，希望哪天又能push吧，哎
+        //查询收货地址数据是否为null
+        Address result = addressMapper.findByAid(aid);
+        if(result == null){
+            throw new AddressNotFoundException("收货地址数据为空");
+        }
+
+        //删除收货地址数据
+        Integer rows = addressMapper.deleteByAid(aid);
+        if(rows != 1){
+            throw new DeleteException("删除数据时出现未知异常");
+        }
+
+        //如果删除之后，没有地址数据了，直接结束方法
+        Integer count = addressMapper.countByUid(uid);
+        if(count == 0){
+            return;
+        }
+
+        //设置新的默认地址
+        Address address = addressMapper.findLastModified(uid);
+        Integer addressAid = address.getAid();
+        Integer rows2 = addressMapper.updateDefaultByAid(addressAid, username, new Date());
+        if(rows2 != 1){
+            throw new UpdateException("更新收货地址时出现未知异常");
         }
     }
 }

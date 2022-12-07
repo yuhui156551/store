@@ -51,6 +51,8 @@ public class BaseController {
             result.setCode(4003);
         } else if (e instanceof AddressNotFoundException) {
             result.setCode(4004);
+        } else if (e instanceof DeleteException) {
+            result.setCode(5002);
         }
         return result;
     }

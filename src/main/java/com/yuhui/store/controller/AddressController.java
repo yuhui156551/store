@@ -60,4 +60,18 @@ public class AddressController extends BaseController {
 
         return new JsonR<>(OK);
     }
+
+    /**TODO 设计请求
+     * 请求路径：/addresses/{aid}/delete
+     * 请求参数：@PathVariable("aid") Integer aid, HttpSession session
+     * 请求类型：POST
+     * 响应结果：JsonResult<Void>
+     */
+    @RequestMapping("{aid}/delete")
+    public JsonR<Void> delete(@PathVariable("aid") Integer aid, HttpSession session){
+        Integer uid = getUidFromSession(session);
+        String username = getUsernameFromSession(session);
+        addressService.delete(aid,uid,username);
+        return new JsonR<>(OK);
+    }
 }

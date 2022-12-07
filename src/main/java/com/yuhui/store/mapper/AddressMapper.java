@@ -57,4 +57,19 @@ public interface AddressMapper {
      * @return 匹配的收货地址详情，如果没有匹配的数据，则返回null
      */
     Address findByAid(Integer aid);
+
+    /**
+     * 删除地址数据
+     * @param aid 地址id
+     * @return 影响行数
+     */
+    Integer deleteByAid(Integer aid);
+
+    /**
+     * TODO 剩下地址某一条设置为默认，规则自定义
+     * 查询某用户剩下地址中的最近修改的收货地址
+     * @param uid 归属的用户id
+     * @return 该用户最后修改的收货地址，如果该用户没有收货地址数据则返回null
+     */
+    Address findLastModified(Integer uid);
 }

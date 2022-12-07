@@ -42,6 +42,12 @@
         modified_time=#{modifiedTime}
         WHERE aid=#{aid}
     </update>
+
+    <!--删除收货地址-->
+    <delete id="deleteByAid">
+        DELETE FROM t_address WHERE aid=#{aid}
+    </delete>
+
     <!--根据收货地址aid值，查询收货地址详情-->
     <select id="findByAid" resultMap="AddressEntityMap">
         SELECT * FROM t_address WHERE aid=#{aid}
@@ -55,6 +61,10 @@
     <!--收货地址列表数据-->
     <select id="findByUid" resultMap="AddressEntityMap">
         SELECT * FROM t_address WHERE uid=#{uid} ORDER BY is_default DESC,created_time DESC
+    </select>
+
+    <select id="findLastModified" resultMap="AddressEntityMap">
+        SELECT * FROM t_address WHERE uid=#{uid} ORDER BY modified_time DESC LIMIT 0,1
     </select>
 
 </mapper>
