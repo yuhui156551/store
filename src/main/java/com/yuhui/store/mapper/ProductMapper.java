@@ -14,4 +14,11 @@ public interface ProductMapper {
      * @return
      */
     List<Product> findHotList();
+
+    /**
+     * 查找商品详细信息
+     * @param id 商品id
+     * @return 信息 or null
+     */
+    Product findById(Integer id);
 }

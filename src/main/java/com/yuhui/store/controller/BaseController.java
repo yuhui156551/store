@@ -53,6 +53,8 @@ public class BaseController {
             result.setCode(4004);
         } else if (e instanceof DeleteException) {
             result.setCode(5002);
+        } else if (e instanceof ProductNotFoundException) {
+            result.setCode(4006);
         }
         return result;
     }

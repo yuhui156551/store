@@ -60,11 +60,11 @@ public class UserController extends BaseController {
         session.setAttribute("username", data.getUsername());
 
         //获取session中的数据
-        System.out.println(getUidFromSession(session));
-        System.out.println(getUsernameFromSession(session));
+        System.err.println(getUidFromSession(session));
+        System.err.println(getUsernameFromSession(session));
 
         // 将以上返回值和状态码OK封装到响应结果中并返回
-        return new JsonR<User>(OK, data);
+        return new JsonR<>(OK, data);
     }
 
     /**
