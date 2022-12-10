@@ -8,3 +8,5 @@
  :smile: 项目比较简单，用来复习MyBatis，熟悉MVC架构
 
  :smiley: 正在完成基本功能...
+ 
+ :stuck_out_tongue_closed_eyes: 完结
