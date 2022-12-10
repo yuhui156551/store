@@ -38,4 +38,11 @@ public interface AddressService {
      * @param username 当前登录的用户名
      */
     void delete(Integer aid,Integer uid, String username);
+
+    /**
+     * 查询收获地址信息
+     * @param aid 收货地址id
+     * @return
+     */
+    Address getByAid(Integer aid);
 }

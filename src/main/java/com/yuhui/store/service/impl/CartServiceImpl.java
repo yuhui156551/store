@@ -5,6 +5,7 @@ import com.yuhui.store.entity.Product;
 import com.yuhui.store.mapper.CartMapper;
 import com.yuhui.store.service.CartService;
 import com.yuhui.store.service.ProductService;
+import com.yuhui.store.service.exception.CartNotFoundException;
 import com.yuhui.store.service.exception.InsertException;
 import com.yuhui.store.service.exception.UpdateException;
 import com.yuhui.store.vo.CartVO;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -69,5 +71,41 @@ public class CartServiceImpl implements CartService {
         List<CartVO> cartVOList = cartMapper.findVOByUid(uid);
 
         return cartVOList;
+    }
+
+    @Override
+    public Integer addNum(Integer cid, Integer uid, String username) {
+        //查询购物车数据
+        Cart cart = cartMapper.findByCid(cid);
+        if(cart == null){
+            throw new CartNotFoundException("购物车数据不存在");
+        }
+
+        //数量+1
+        Integer num = cart.getNum() + 1;
+
+        //执行修改操作
+        Integer rows = cartMapper.updateNumByCid(cid, num, username, new Date());
+        if(rows != 1){
+            throw new UpdateException("修改数据时出现未知错误");
+        }
+
+        return num;
+    }
+
+    @Override
+    public List<CartVO> getVOByCids(Integer uid, Integer[] cids) {
+        List<CartVO> list = cartMapper.findVOByCids(cids);
+
+        //迭代器遍历，检测商品数据是否属于当前用户
+        Iterator<CartVO> it = list.iterator();
+        while (it.hasNext()){
+            CartVO cartVO = it.next();
+            if(!cartVO.getUid().equals(uid)){
+                it.remove();
+            }
+        }
+
+        return list;
     }
 }

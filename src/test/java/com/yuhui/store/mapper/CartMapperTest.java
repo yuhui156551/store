@@ -1,6 +1,7 @@
 package com.yuhui.store.mapper;
 
 
+import com.yuhui.store.entity.Cart;
 import com.yuhui.store.vo.CartVO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,11 @@ public class CartMapperTest {
     public void findVOByUid() {
         List<CartVO> list = cartMapper.findVOByUid(10);
         System.out.println(list);
+    }
+
+    @Test
+    public void findByCid() {
+        Cart cart = cartMapper.findByCid(2);
+        System.out.println(cart);
     }
 }

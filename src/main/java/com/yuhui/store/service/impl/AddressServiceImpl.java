@@ -136,4 +136,23 @@ public class AddressServiceImpl implements AddressService {
             throw new UpdateException("更新收货地址时出现未知异常");
         }
     }
+
+    @Override
+    public Address getByAid(Integer aid) {
+        //根据aid获取收货地址信息
+        Address address = addressMapper.findByAid(aid);
+        if(address == null) {
+            throw new AddressNotFoundException("收货地址信息不存在");
+        }
+
+        address.setProvinceCode(null);
+        address.setCityCode(null);
+        address.setAreaCode(null);
+        address.setCreatedUser(null);
+        address.setCreatedTime(null);
+        address.setModifiedUser(null);
+        address.setModifiedTime(null);
+
+        return address;
+    }
 }

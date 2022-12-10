@@ -55,6 +55,8 @@ public class BaseController {
             result.setCode(5002);
         } else if (e instanceof ProductNotFoundException) {
             result.setCode(4006);
+        } else if (e instanceof CartNotFoundException) {
+            result.setCode(4007);
         }
         return result;
     }
