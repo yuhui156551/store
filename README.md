@@ -2,19 +2,12 @@
 ## 商城项目
 
 ### 系统开发及运行环境
-1.操作系统：Windows 10
+Java开发包：JDK 8
 
-2.Java开发包：JDK 8
+数据库：MySQL 8.0.30
 
-3.项目管理工具：Maven 3.6.1
+服务器架构：Spring Boot 2.7.6 + MyBatis 2.3.0 + AJAX
 
-4.项目开发工具：IntelliJ IDEA 2022.2.2 x64
-
-5.数据库：MySQL 8.0.30
-
-6.浏览器：Google Chrome
-
-7.服务器架构：Spring Boot 2.7.6 + MyBatis 2.3.0 + AJAX
 ### 前言
   上面的运行环境仅供参考，如果你不是jdk17及以上的话，不建议使用boot3，运行会出错。
   
