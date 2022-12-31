@@ -1,10 +1,21 @@
 # store
-商城项目
+## 商城项目
 
- :tired_face: 只可惜前端用的是JQuery
+### 技术栈
+  
+  SpringBoot2、mybatis、MySQL、lombok、AspectJ、JQuery。
+  
+### 实现
 
- :yum: 后端主要技术栈：SpringBoot2+Mybatis
+  主要实现功能：用户注册登录、修改资料、上传头像、收获管理、热销商品、购物车、订单等。
+  
+  下面是一些效果图，如果看不了的话，建议科学上网。
 
- :smile: 项目比较简单，用来复习MyBatis，熟悉MVC架构
-
- :smiley: 正在完成基本功能...
+#### 主页面
+ ![image](https://github.com/yuhui156551/store/blob/master/imag/20221219185112.png)
+#### 管理用户信息
+ ![image](https://github.com/yuhui156551/store/blob/master/imag/20221219185217.png)
+#### 加入购物车
+ ![image](https://github.com/yuhui156551/store/blob/master/imag/20221219185442.png)
+#### 生成订单
+ ![image](https://github.com/yuhui156551/store/blob/master/imag/20221219185541.png)
