@@ -3,7 +3,7 @@
 
 ### 技术栈
   
-  SpringBoot2、mybatis、MySQL、lombok、AspectJ、JQuery。
+  SpringBoot2、Mybatis、MySQL、lombok、AspectJ、JQuery。
   
 ### 实现
 
